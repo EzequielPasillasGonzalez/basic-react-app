@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 
 import logo from "@/logo.svg";
-import { routes } from "@/routes/routes.ts";
+import { routes } from "@/routes/routes.tsx";
 
 export const Navigation = () => {
   return (
@@ -33,8 +33,21 @@ export const Navigation = () => {
 
         <Suspense fallback={<span> Loading... </span>}>
           <Routes>
-            {routes.map(({ to, path, Component }) => (
-              <Route key={to} path={path} element={<Component />} />
+            {routes.map(({ path, Component, children }) => (
+              <Route
+                key={path}
+                path={path}
+                element={Component ? <Component /> : null}
+              >
+                {/*  Renderiza las sub-rutas que se insertarán en el <Outlet /> */}
+                {children?.map((child) => (
+                  <Route
+                    key={child.path}
+                    path={child.path}
+                    element={<child.Component />}
+                  />
+                ))}
+              </Route>
             ))}
 
             <Route path="/*" element={<Navigate to={routes[0].to} replace />} />
