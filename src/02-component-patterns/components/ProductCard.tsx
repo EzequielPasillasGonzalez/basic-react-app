@@ -1,16 +1,23 @@
-import { createContext } from "react";
+import { createContext, type CSSProperties, type ReactElement } from "react";
 
 import styles from "@/02-component-patterns/styles/styles.module.css";
 import { useProduct } from "@/02-component-patterns/hooks/useProduct.ts";
 import type {
   ProductContextProps,
-  ProductCardProps,
+  Product,
 } from "@/02-component-patterns/interfaces/interfaces.ts";
 
 export const ProductContext = createContext({} as ProductContextProps);
 const { Provider } = ProductContext;
 
-export const ProductCard = ({ product, children }: ProductCardProps) => {
+export interface Props {
+  product: Product;
+  children?: ReactElement | ReactElement[];
+  className?: string;
+  style?: CSSProperties;
+}
+
+export const ProductCard = ({ product, children, className, style }: Props) => {
   const { counter, handleIncreaseBy } = useProduct();
 
   return (
@@ -22,18 +29,9 @@ export const ProductCard = ({ product, children }: ProductCardProps) => {
         product,
       }}
     >
-      <div className={styles.productCard}>
-        {/* <ProductImage img={product.img} />
-      <ProductTitle title={product.title} />
-      <ProductButtons counter={counter} handleIncrease={handleIncreaseBy} /> */}
-
+      <div className={`${styles.productCard} ${className}`} style={style}>
         {children}
       </div>
     </Provider>
   );
 };
-
-// hack: Se esta añadiendo una propiedad al productCard
-// ProductCard.Title = ProductTitle;
-// ProductCard.Buttons = ProductButtons;
-// ProductCard.Image = ProductImage;
