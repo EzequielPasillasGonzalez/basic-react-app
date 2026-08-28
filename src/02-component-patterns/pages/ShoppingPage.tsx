@@ -1,9 +1,9 @@
 import {
-  ProductButtons,
   ProductCard,
+  ProductButtons,
   ProductImage,
   ProductTitle,
-} from "@/02-component-patterns/components/ProductCard.tsx";
+} from "@/02-component-patterns/components/";
 
 const product = {
   id: "1",
@@ -25,8 +25,8 @@ export const ShoppingPage = () => {
           <ProductButtons />
         </ProductCard>
 
+        {/* // notes:  Diferentes maenras de poner los children  */}
         <ProductCard product={product}>
-          {/* // notes:  Diferentes maenras de poner los children  */}
           <ProductCard.Image />
           <ProductCard.Title title={"vsdv"} />
           <ProductCard.Buttons />
