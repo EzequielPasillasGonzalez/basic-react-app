@@ -2,7 +2,7 @@ import type {
   onChangeArgs,
   Product,
 } from "@/02-component-patterns/interfaces/interfaces.ts";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   product: Product;
@@ -13,13 +13,7 @@ interface Props {
 export const useProduct = ({ onChange, product, value = 0 }: Props) => {
   const [counter, setCounter] = useState(value);
 
-  const isControlled = useRef(!!onChange);
-
   const handleIncreaseBy = (value: number) => {
-    if (isControlled.current) {
-      return onChange!({ count: value, product });
-    }
-
     const newValue = Math.max(counter + value, 0);
     setCounter(newValue);
 
