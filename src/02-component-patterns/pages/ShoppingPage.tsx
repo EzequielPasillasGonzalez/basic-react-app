@@ -23,6 +23,9 @@ export const ShoppingPage = () => {
           />
           <ProductCard.Title className=" text-bold" />
           <ProductCard.Buttons className="custom-buttons" />
+           <ProductImage className="custom-image" />
+          <ProductTitle title={product.title} className=" text-bold" />
+          <ProductButtons className="custom-buttons" /> 
         </ProductCard> */}
 
         {/* // notes:  Diferentes maenras de poner los children  */}
@@ -35,9 +38,14 @@ export const ShoppingPage = () => {
             maxCount: 10,
           }}
         >
-          <ProductImage className="custom-image" />
-          <ProductTitle title={product.title} className=" text-bold" />
-          <ProductButtons className="custom-buttons" />
+          {(message) => (
+            <>
+              <ProductImage className="custom-image" />
+              <ProductTitle title={product.title} className=" text-bold" />
+              <ProductButtons className="custom-buttons" />
+              <h1>{message}</h1>
+            </>
+          )}
         </ProductCard>
       </div>
     </div>

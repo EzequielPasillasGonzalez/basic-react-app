@@ -1,4 +1,4 @@
-import { type CSSProperties, type ReactElement } from "react";
+import { type CSSProperties, type JSX } from "react";
 
 import styles from "@/02-component-patterns/styles/styles.module.css";
 import { useProduct } from "@/02-component-patterns/hooks/useProduct.ts";
@@ -13,7 +13,8 @@ const { Provider } = ProductContext;
 
 export interface Props {
   product: Product;
-  children?: ReactElement | ReactElement[];
+  // children?: ReactElement | ReactElement[];
+  children: (message: string) => JSX.Element;
   className?: string;
   style?: CSSProperties;
   onChange?: (args: onChangeArgs) => void;
@@ -44,10 +45,11 @@ export const ProductCard = ({
         counter,
         handleIncreaseBy,
         product,
+        initialValues,
       }}
     >
       <div className={`${styles.productCard} ${className}`} style={style}>
-        {children}
+        {children("holi")}
       </div>
     </Provider>
   );

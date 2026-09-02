@@ -14,6 +14,7 @@ export interface ProductContextProps {
   counter: number;
   handleIncreaseBy: (value: number) => void;
   product: Product;
+  initialValues?: InitialValues;
 }
 
 export interface ProductCardHOCProps {
