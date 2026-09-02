@@ -5,6 +5,7 @@ import { useProduct } from "@/02-component-patterns/hooks/useProduct.ts";
 import type {
   InitialValues,
   Product,
+  ProductCardHandlers,
   onChangeArgs,
 } from "@/02-component-patterns/interfaces/interfaces.ts";
 import { ProductContext } from "@/02-component-patterns/context/ProductConter.ts";
@@ -14,7 +15,7 @@ const { Provider } = ProductContext;
 export interface Props {
   product: Product;
   // children?: ReactElement | ReactElement[];
-  children: (message: string) => JSX.Element;
+  children: (args: ProductCardHandlers) => JSX.Element;
   className?: string;
   style?: CSSProperties;
   onChange?: (args: onChangeArgs) => void;
@@ -31,12 +32,13 @@ export const ProductCard = ({
   value,
   initialValues,
 }: Props) => {
-  const { counter, handleIncreaseBy } = useProduct({
-    onChange,
-    product,
-    value,
-    initialValues,
-  });
+  const { counter, handleIncreaseBy, isMaxCountReached, reset, maxCount } =
+    useProduct({
+      onChange,
+      product,
+      value,
+      initialValues,
+    });
 
   return (
     <Provider
@@ -45,11 +47,21 @@ export const ProductCard = ({
         counter,
         handleIncreaseBy,
         product,
-        initialValues,
+        maxCount,
       }}
     >
       <div className={`${styles.productCard} ${className}`} style={style}>
-        {children("holi")}
+        {
+          //note: Se manda a llamar la funcion children
+          children({
+            count: counter,
+            isMaxCountReached,
+            maxCount,
+            reset,
+            increaseBy: handleIncreaseBy,
+            product,
+          })
+        }
       </div>
     </Provider>
   );

@@ -42,8 +42,16 @@ export const useProduct = ({
     onChange?.({ product, count: newValue }); // Si tiene un valor se ejecuta la funcion
   };
 
+  const reset = () => {
+    setInternalCounter(initialValues?.count ?? value ?? 0);
+  };
+
   return {
     counter,
     handleIncreaseBy,
+    isMaxCountReached:
+      !!initialValues?.count && initialValues.maxCount === counter,
+    maxCount: initialValues?.maxCount,
+    reset,
   };
 };

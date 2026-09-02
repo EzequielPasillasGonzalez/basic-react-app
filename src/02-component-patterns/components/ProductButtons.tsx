@@ -8,16 +8,11 @@ export interface Props {
 }
 
 export const ProductButtons = ({ className, style }: Props) => {
-  // TODO: extraer maxCount
-  const { handleIncreaseBy, counter, initialValues } =
-    useContext(ProductContext);
+  const { handleIncreaseBy, counter, maxCount } = useContext(ProductContext);
 
-  // todo: isMaxReached = useCallback, [counter, maxCount]
-  // true si el count == maxCount
-  // false si el count != maxCount
   const isMaxReached = useCallback(
-    () => !!initialValues?.maxCount && counter === initialValues.maxCount,
-    [counter, initialValues?.maxCount],
+    () => !!maxCount && counter === maxCount,
+    [counter, maxCount],
   );
 
   return (
