@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import logo from "@/logo.svg";
+import { RegisterPage } from "@/03-forms/pages/RegisterPage.tsx";
 
 export const Navigation = () => {
   return (
@@ -18,10 +19,10 @@ export const Navigation = () => {
           <ul>
             <li>
               <NavLink
-                to="/"
+                to="/register"
                 className={({ isActive }) => (isActive ? "nav-active" : "")}
               >
-                Home
+                Register Page
               </NavLink>
             </li>
             <li>
@@ -44,7 +45,7 @@ export const Navigation = () => {
         </nav>
 
         <Routes>
-          <Route path="/" element={<div> Home </div>} />
+          <Route path="/register" element={<RegisterPage />} />
 
           <Route path="/about" element={<div> About </div>} />
 
