@@ -1,3 +1,4 @@
+import { MySelect } from "@/03-forms/components/MySelect.tsx";
 import { MyTextInput } from "@/03-forms/components/MyTextInput.tsx";
 import "@/03-forms/styles/styles.css";
 import { Field, Form, ErrorMessage, Formik } from "formik";
@@ -50,15 +51,13 @@ export const FormikAbstraction = () => {
             <MyTextInput label="Last Name" name="lastName" />
             <MyTextInput label="Email" name="email" />
 
-            <label htmlFor="jobType">Job Type</label>
-            <Field name="jobType" as="select">
+            <MySelect label="Job Type" name="jobType">
               <option value={""}>Pick Something</option>
               <option value={"developer"}>developer</option>
               <option value={"designer"}>designer</option>
               <option value={"it-senior"}>it Senior</option>
               <option value={"it-jr"}>it Jr</option>
-            </Field>
-            <ErrorMessage component={"span"} name="jobType" />
+            </MySelect>
 
             <label htmlFor="terms">
               <Field name="terms" type="checkbox" />
