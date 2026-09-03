@@ -7,11 +7,13 @@ import {
 } from "react-router-dom";
 
 import logo from "@/logo.svg";
-import { RegisterPage } from "@/03-forms/pages/RegisterPage.tsx";
-import { FormikBasicPage } from "@/03-forms/pages/FormikBasicPage.tsx";
-import { FormikYupPage } from "@/03-forms/pages/FormikYupPage.tsx";
-import { FormikComponents } from "@/03-forms/pages/FormikComponents.tsx";
-import { FormikAbstraction } from "@/03-forms/pages/FormikAbstraction.tsx";
+import {
+  FormikAbstraction,
+  FormikBasicPage,
+  FormikComponents,
+  FormikYupPage,
+  RegisterPage,
+} from "@/03-forms/pages/index.ts";
 
 export const Navigation = () => {
   return (

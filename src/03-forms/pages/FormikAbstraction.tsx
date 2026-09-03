@@ -1,9 +1,12 @@
-import { MyCheckbox } from "@/03-forms/components/MyCheckbox.tsx";
-import { MySelect } from "@/03-forms/components/MySelect.tsx";
-import { MyTextInput } from "@/03-forms/components/MyTextInput.tsx";
 import "@/03-forms/styles/styles.css";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+
+import {
+  MyCheckbox,
+  MySelect,
+  MyTextInput,
+} from "@/03-forms/components/index.ts";
 
 export const FormikAbstraction = () => {
   return (
