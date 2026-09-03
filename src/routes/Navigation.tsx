@@ -10,6 +10,7 @@ import logo from "@/logo.svg";
 import { RegisterPage } from "@/03-forms/pages/RegisterPage.tsx";
 import { FormikBasicPage } from "@/03-forms/pages/FormikBasicPage.tsx";
 import { FormikYupPage } from "@/03-forms/pages/FormikYupPage.tsx";
+import { FormikComponents } from "@/03-forms/pages/FormikComponents.tsx";
 
 export const Navigation = () => {
   return (
@@ -43,6 +44,15 @@ export const Navigation = () => {
                 Formik Yup
               </NavLink>
             </li>
+
+            <li>
+              <NavLink
+                to="/formik-components"
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
+              >
+                Formik Components
+              </NavLink>
+            </li>
           </ul>
         </nav>
 
@@ -52,6 +62,8 @@ export const Navigation = () => {
           <Route path="/formik-basic" element={<FormikBasicPage />} />
 
           <Route path="/formik-yup" element={<FormikYupPage />} />
+
+          <Route path="/formik-components" element={<FormikComponents />} />
 
           <Route path="/*" element={<Navigate to={"/"} replace />} />
         </Routes>
