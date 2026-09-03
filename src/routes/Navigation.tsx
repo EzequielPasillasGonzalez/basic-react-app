@@ -12,6 +12,7 @@ import {
   FormikBasicPage,
   FormikComponents,
   FormikYupPage,
+  RegisterFormikPage,
   RegisterPage,
 } from "@/03-forms/pages/index.ts";
 
@@ -29,6 +30,15 @@ export const Navigation = () => {
                 className={({ isActive }) => (isActive ? "nav-active" : "")}
               >
                 Register Page
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/register-formik"
+                className={({ isActive }) => (isActive ? "nav-active" : "")}
+              >
+                Register Formik Page
               </NavLink>
             </li>
             <li>
@@ -70,6 +80,8 @@ export const Navigation = () => {
 
         <Routes>
           <Route path="/register" element={<RegisterPage />} />
+
+          <Route path="/register-formik" element={<RegisterFormikPage />} />
 
           <Route path="/formik-basic" element={<FormikBasicPage />} />
 
