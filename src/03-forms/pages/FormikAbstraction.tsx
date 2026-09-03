@@ -1,14 +1,9 @@
+import { MyCheckbox } from "@/03-forms/components/MyCheckbox.tsx";
 import { MySelect } from "@/03-forms/components/MySelect.tsx";
 import { MyTextInput } from "@/03-forms/components/MyTextInput.tsx";
 import "@/03-forms/styles/styles.css";
-import { Field, Form, ErrorMessage, Formik } from "formik";
+import { Form, Formik } from "formik";
 import * as Yup from "yup";
-
-interface FormValues {
-  firstName: string;
-  lastName: string;
-  email: string;
-}
 
 export const FormikAbstraction = () => {
   return (
@@ -59,12 +54,7 @@ export const FormikAbstraction = () => {
               <option value={"it-jr"}>it Jr</option>
             </MySelect>
 
-            <label htmlFor="terms">
-              <Field name="terms" type="checkbox" />
-              Terms and Conditions
-            </label>
-
-            <ErrorMessage component={"span"} name="terms" />
+            <MyCheckbox label="Terms and Conditions" name="terms" />
 
             <button type="submit">Submit</button>
           </Form>
